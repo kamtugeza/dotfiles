@@ -49,15 +49,11 @@ info "Environment setup initialized."
 
 tasks=("big-bang")
 
-for i in "${!tasks[@]}"; do
-  export TASK_NAME="${tasks[$i]}"
+for task_name in "${tasks[@]}"; do
+  export TASK_NAME="$task_name"
   export TASK_DIR="$SCRIPT_DIR/tasks/$TASK_NAME"
 
   info "Started task: $TASK_NAME"
-
-  if [[ i -eq 0 && -f "$TASK_DIR/.zshrc" ]]; then
-    source "$TASK_DIR/.zshrc"
-  fi
 
   if [[ -f "$TASK_DIR/zsh/env.sh" ]]; then
     source "$TASK_DIR/zsh/env.sh"
