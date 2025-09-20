@@ -20,5 +20,5 @@ download() {
     exit 1
   fi
 
-  info "Downloaded info: $output_path"
+  info "Downloaded into: $output_path"
 }
