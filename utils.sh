@@ -39,6 +39,15 @@ err() {
   fi
 }
 
+has_command() {
+  if ! command -v "$1" >/dev/null 2>&1; then
+    warn "Command not found: $1"
+    return 1
+  fi
+
+  return 0
+}
+
 info() {
   msg "INFO" "${1:-}"
 }

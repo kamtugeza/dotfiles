@@ -2,12 +2,12 @@
 
 set -euo pipefail
 
-export SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 source "$SCRIPT_DIR/utils.sh"
 
-export ARCH="$(uname -m)"
-export OS="$(uname -s)"
+ARCH="$(uname -m)"
+OS="$(uname -s)"
 
 info "Configurations:"
 info " - System: $OS ($ARCH)"
@@ -17,15 +17,15 @@ if ! is_ubuntu && ! is_mac; then
   exit 1
 fi
 
-modules=("big-bang")
+modules=("big-bang" "zsh")
 
 for module_name in "${modules[@]}"; do
-  export MODULE_NAME="$module_name"
-  export MODULE_DIR="$SCRIPT_DIR/$MODULE_NAME"
+  MODULE_NAME="$module_name"
+  MODULE_DIR="$SCRIPT_DIR/$MODULE_NAME"
 
   info "Start: $MODULE_NAME"
 
-  source "$MODULE_DIR/run.sh"
+  source "$MODULE_DIR/install.sh"
 
   info "Finished: $MODULE_NAME"
 done 

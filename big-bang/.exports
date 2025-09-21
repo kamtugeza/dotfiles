@@ -9,5 +9,3 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$XDG_BIN_HOME:$PATH"
 
 export ZSH_CONFIG_HOME="$XDG_CONFIG_HOME/zsh"
-export ZSH_ENV="$ZSH_CONFIG_HOME/env.sh"
-export ZSH_CONF="$ZSH_CONFIG_HOME/conf.sh"
