@@ -4,40 +4,12 @@ set -euo pipefail
 
 export SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$SCRIPT_DIR/utils/log.sh"
-source "$SCRIPT_DIR/utils/os.sh"
+source "$SCRIPT_DIR/utils.sh"
 
 export ARCH="$(uname -m)"
 export OS="$(uname -s)"
-export FORCE=false
-
-while [[ $# -gt 0 ]]; do
-  case $1 in
-
-    --force|-f)
-      FORCE=true
-      shift
-      ;;
-
-    --help|-h)
-      echo "Usage: $(basename "$0") [OPTIONS]"
-      echo ""
-      echo "Options:"
-      echo "--force, -f     Overwrite existing files without backup."
-      echo "--help, -h      Show help message."
-      exit 0
-      ;;
-
-    *)
-      err "Unknown option: $1"
-      exit 1
-      ;;
-
-  esac
-done
 
 info "Configurations:"
-info " - Force:  $FORCE"
 info " - System: $OS ($ARCH)"
 
 if ! is_ubuntu && ! is_mac; then 
@@ -45,23 +17,19 @@ if ! is_ubuntu && ! is_mac; then
   exit 1
 fi
 
-info "Environment setup initialized."
+modules=("big-bang")
 
-tasks=("big-bang")
+for module_name in "${modules[@]}"; do
+  export MODULE_NAME="$module_name"
+  export MODULE_DIR="$SCRIPT_DIR/$MODULE_NAME"
 
-for task_name in "${tasks[@]}"; do
-  export TASK_NAME="$task_name"
-  export TASK_DIR="$SCRIPT_DIR/tasks/$TASK_NAME"
+  info "Start: $MODULE_NAME"
 
-  info "Started task: $TASK_NAME"
+  source "$MODULE_DIR/run.sh"
 
-  if [[ -f "$TASK_DIR/zsh/env.sh" ]]; then
-    source "$TASK_DIR/zsh/env.sh"
-  fi
-
-  bash "$TASK_DIR/run.sh"
-
-  info "Finished task: $TASK_NAME"
+  info "Finished: $MODULE_NAME"
 done 
 
 info "Environment ready!"
+
+exit 0
