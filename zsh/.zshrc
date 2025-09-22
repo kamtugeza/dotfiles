@@ -2,7 +2,6 @@
 
 source "$HOME/.exports"
 
-# Plugin Manager
 ZINIT_HOME="$XDG_DATA_HOME/zinit"
 
 if [[ ! -d "$ZINIT_HOME" ]]; then
@@ -11,14 +10,8 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
 fi
 
 source "$ZINIT_HOME/zinit.zsh"
-
-# Fuzzy Finder
 source <(fzf --zsh)
-
-# Change Dir
 source <(zoxide init zsh)
-
-# Other
 source "$ZSH_CONFIG_HOME/complition.sh"
 source "$ZSH_CONFIG_HOME/history.sh"
 source "$ZSH_CONFIG_HOME/prompt.sh"

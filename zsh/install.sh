@@ -15,7 +15,7 @@ if ! has_command fzf; then
   brew install fzf
 fi
 
-if ! has_command z; then
+if ! has_command zoxide; then
   brew install zoxide
 fi
 
