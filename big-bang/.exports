@@ -6,6 +6,7 @@ export XDG_LIB_HOME="$HOME/.local/lib"
 export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="$XDG_BIN_HOME:$PATH"
 
 export ZSH_CONFIG_HOME="$XDG_CONFIG_HOME/zsh"

@@ -11,9 +11,15 @@ if ! has_command zsh; then
   chsh -s "$(which zsh)"
 fi
 
+if ! has_command fzf; then
+  brew install fzf
+fi
+
+if ! has_command z; then
+  brew install zoxide
+fi
+
 link "$MODULE_DIR/complition.sh" "$ZSH_CONFIG_HOME/complition.sh"
-link "$MODULE_DIR/git-status.sh" "$ZSH_CONFIG_HOME/git-status.sh"
 link "$MODULE_DIR/history.sh" "$ZSH_CONFIG_HOME/history.sh"
-link "$MODULE_DIR/plugin-manager.sh" "$ZSH_CONFIG_HOME/plugin-manager.sh"
 link "$MODULE_DIR/prompt.sh" "$ZSH_CONFIG_HOME/prompt.sh"
 link "$MODULE_DIR/.zshrc" "$HOME/.zshrc"

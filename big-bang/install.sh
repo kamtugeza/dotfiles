@@ -17,16 +17,17 @@ make_dir "${dirs[@]}"
 
 link "$MODULE_DIR/.exports" "$HOME/.exports"
 
-if is_mac; then
-  if ! has_command brew; then
-    info "Installing Homebrew"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
+# apt-get sometimes does not provide the latest versions (e.g., fzf),
+# which is why we install Homebrew on Ubuntu as well.
+if ! has_command brew; then
+  info "Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-  brew update
-  brew upgrade
-
-elif is_ubuntu; then
+brew update
+brew upgrade
+  
+if is_ubuntu; then
   info "Refreshing package lists: sudo apt-get update"
   sudo apt-get update
   sudo apt-get upgrade
