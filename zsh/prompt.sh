@@ -21,13 +21,12 @@ function update_git_status_prompt() {
 }
 
 function update_prompt() {
-  PROMPT=""
+  PROMPT=$'\n'
 
   if [[ -n "$SSH_CONNECTION" || -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
     PROMPT+="%F{green}%n@%m%F{text}:%f "
   fi
 
-  PROMPT+=$'\n'
   PROMPT+="%F{blue}%5~%f${GIT_STATUS_PROMPT}"
   PROMPT+=$'\n'
   PROMPT+="%F{green}❭%f "
