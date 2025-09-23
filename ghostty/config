@@ -1,0 +1,11 @@
+adjust-cell-height = 20%
+background-opacity = 0.98
+background-blur = 20
+font-family = "JetBrainsMonoNL Nerd Font Mono"
+font-family-bold = "JetBrainsMonoNL Nerd Font Mono"
+font-family-italic = "JetBrainsMonoNL Nerd Font Mono"
+font-family-bold-italic = "JetBrainsMonoNL Nerd Font Mono"
+font-size = 13
+macos-icon = blueprint
+theme = "Ghostty Default Style Dark"
+window-title-font-family = "JetBrainsMonoNL Nerd Font Mono"

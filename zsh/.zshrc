@@ -10,7 +10,12 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
 fi
 
 source "$ZINIT_HOME/zinit.zsh"
+
+# Fuzzy Finder
 source <(fzf --zsh)
+export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden'
+export FZF_COMPLETION_DIR_OPTS="--walker dir,follow,hidden"
+
 source <(zoxide init zsh)
 source "$ZSH_CONFIG_HOME/complition.sh"
 source "$ZSH_CONFIG_HOME/history.sh"
