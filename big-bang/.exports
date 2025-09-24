@@ -6,7 +6,12 @@ export XDG_LIB_HOME="$HOME/.local/lib"
 export XDG_OPT_HOME="$HOME/.local/opt"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+# Sometimes on Ubuntu, it's easier to install an application via Homebrew
+if [[ -d "/home/linuxbrew/.linuxbrew/bin" ]]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+fi
+
 export PATH="$XDG_BIN_HOME:$PATH"
 
 export ZSH_CONFIG_HOME="$XDG_CONFIG_HOME/zsh"
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
