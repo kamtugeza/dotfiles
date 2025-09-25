@@ -17,13 +17,13 @@ if ! is_ubuntu && ! is_mac; then
   exit 1
 fi
 
-modules=("big-bang" "zsh" "ghostty" "tmux" "node")
+modules=("essentials" "zsh" "ghostty" "tmux" "node")
 
 for module_name in "${modules[@]}"; do
   MODULE_NAME="$module_name"
   MODULE_DIR="$SCRIPT_DIR/$MODULE_NAME"
 
-  info "Start: $MODULE_NAME"
+  info "Installing: $MODULE_NAME"
 
   source "$MODULE_DIR/install.sh"
 
