@@ -27,14 +27,23 @@ cp "$MODULE_DIR/personal.example" "$GIT_PERSONAL_PATH"
 
 USER_NAME=$(gum input --placeholder "Git: What is your full name?")
 
-if [[ -n "$USER_NAME" ]]; then
-  sed -i "s/USER_NAME/$USER_NAME/g" "$GIT_PERSONAL_PATH"
+if [[ -z "$USER_NAME" ]]; then
+  err "Invalid name!"
+  exit 1
 fi
+
+info "User name: $USER_NAME"
 
 USER_EMAIL=$(gum input --placeholder "Git: What is your email address?")
 
-if [[ -n "$USER_EMAIL" ]]; then
-  sed -i "s/USER_EMAIL/$USER_EMAIL/g" "$GIT_PERSONAL_PATH"
+if [[ -z "$USER_EMAIL" ]]; then
+  err "Invalid email!"
+  exit 1
 fi
+
+info "User email: $USER_EMAIL"
+
+sed -i "s/USER_NAME/$USER_NAME/g" "$GIT_PERSONAL_PATH"
+sed -i "s/USER_EMAIL/$USER_EMAIL/g" "$GIT_PERSONAL_PATH"
 
 link "$GIT_PERSONAL_PATH" "$XDG_CONFIG_HOME/git/personal"
