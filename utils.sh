@@ -10,7 +10,7 @@ backup() {
     flags="-ar"
   fi
 
-  if ! output=$(cp "$flags" -- "$path" "$backup_dir" 2>&1); then
+  if ! output=$(cp "$flags" -- "$path" "$backup_path" 2>&1); then
     err "$output"
     return 1
   fi
