@@ -34,4 +34,3 @@ if is_ubuntu; then
 fi
 
 source "$MODULE_DIR/gcc/install.sh"
-source "$MODULE_DIR/fonts/install.sh"
