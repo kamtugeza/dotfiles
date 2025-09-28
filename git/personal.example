@@ -1,4 +1,4 @@
 [user]
-  email = USER_EMAIL
-  name = USER_NAME
+  email = {{USER_EMAIL}}
+  name = {{USER_FULL_NAME}}
   

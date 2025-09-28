@@ -1,0 +1,7 @@
+Host *
+  AddKeysToAgent yes
+
+Host theoleksii.me
+  HostName github.com
+  User kamtugeza 
+  IdentityFile {{GIT_SSH_KEY}}

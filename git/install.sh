@@ -23,27 +23,29 @@ if [[ -f "$GIT_PERSONAL_PATH" ]]; then
   rm "$GIT_PERSONAL_PATH" 
 fi
 
-cp "$MODULE_DIR/personal.example" "$GIT_PERSONAL_PATH"
+cp "$GIT_PERSONAL_PATH.example" "$GIT_PERSONAL_PATH"
 
-USER_NAME=$(gum input --placeholder "Git: What is your full name?")
+GIT_USER_FULL_NAME=$(gum input --placeholder "Git: What is your full name?")
 
-if [[ -z "$USER_NAME" ]]; then
+if [[ -z "$GIT_USER_FULL_NAME" ]]; then
   err "Invalid name!"
   exit 1
 fi
 
-info "User name: $USER_NAME"
+info "User name: $GIT_USER_FULL_NAME"
 
-USER_EMAIL=$(gum input --placeholder "Git: What is your email address?")
+GIT_USER_EMAIL=$(gum input --placeholder "Git: What is your email address?")
 
-if [[ -z "$USER_EMAIL" ]]; then
+if [[ -z "$GIT_USER_EMAIL" ]]; then
   err "Invalid email!"
   exit 1
 fi
 
-info "User email: $USER_EMAIL"
+info "User email: $GIT_USER_EMAIL"
 
-sed -i "s/USER_NAME/$USER_NAME/g" "$GIT_PERSONAL_PATH"
-sed -i "s/USER_EMAIL/$USER_EMAIL/g" "$GIT_PERSONAL_PATH"
+sed -i \
+  -e "s|{{USER_FULL_NAME}}|$GIT_USER_FULL_NAME|g" \
+  -e "s|{{USER_EMAIL}}|$GIT_USER_EMAIL|g" \
+  "$GIT_PERSONAL_PATH"
 
 link "$GIT_PERSONAL_PATH" "$XDG_CONFIG_HOME/git/personal"
