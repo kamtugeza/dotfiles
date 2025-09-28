@@ -13,5 +13,8 @@ fi
 
 export PATH="$XDG_BIN_HOME:$PATH"
 
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 export ZSH_CONFIG_HOME="$XDG_CONFIG_HOME/zsh"
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
