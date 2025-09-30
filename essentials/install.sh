@@ -46,7 +46,7 @@ if ! has_command gcc; then
 
   elif is_ubuntu; then
     info "Installing build-essential..."
-    sudo apt-get install -y build-essential libncursesw4-dev
+    sudo apt-get install -y build-essential libncurses-dev
   fi
 fi
 
