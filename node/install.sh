@@ -17,3 +17,7 @@ if ! has_command nvm; then
 
   nvm install --lts
 fi
+
+if ! has_command pnpm; then
+  npm install -g pnpm@latest-10
+fi
