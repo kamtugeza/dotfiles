@@ -4,6 +4,11 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
+# Cached configuration from the previous builds
+if [[ -n "$XDG_CACHE_HOME/.exports" ]]; then
+  source "$XDG_CACHE_HOME/.exports"
+fi
+
 source "$SCRIPT_DIR/utils.sh"
 
 ARCH="$(uname -m)"

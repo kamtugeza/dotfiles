@@ -25,23 +25,8 @@ fi
 
 cp "$GIT_PERSONAL_PATH.example" "$GIT_PERSONAL_PATH"
 
-GIT_USER_FULL_NAME=$(gum input --placeholder "Git: What is your full name?")
-
-if [[ -z "$GIT_USER_FULL_NAME" ]]; then
-  err "Invalid name!"
-  exit 1
-fi
-
-info "User name: $GIT_USER_FULL_NAME"
-
-GIT_USER_EMAIL=$(gum input --placeholder "Git: What is your email address?")
-
-if [[ -z "$GIT_USER_EMAIL" ]]; then
-  err "Invalid email!"
-  exit 1
-fi
-
-info "User email: $GIT_USER_EMAIL"
+input_var "GIT_USER_FULL_NAME" "Git: What is your full name?" "User name"
+input_var "GIT_USER_EMAIL" "Git: What is your email address?" "User email"
 
 sed -i \
   -e "s|{{USER_FULL_NAME}}|$GIT_USER_FULL_NAME|g" \

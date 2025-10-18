@@ -15,14 +15,7 @@ fi
 
 cp "$SSH_CONFIG_PATH.example" "$SSH_CONFIG_PATH"
 
-GIT_SSH_KEY=$(gum input --placeholder "SSH: Where is your Git private key located? (absolute path)")
-
-if [[ -z "$GIT_SSH_KEY" ]]; then
-  err "Invalid path!"
-  exit 1
-fi
-
-info "Git SSH key: $GIT_SSH_KEY"
+input_var "GIT_SSH_KEY" "SSH: Where is your Git private key located? (absolute path)" "Git SSH key"
 
 if [[ ! -f "$GIT_SSH_KEY" ]]; then
   info "The file '$GIT_SSH_KEY' does not exist."

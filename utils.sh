@@ -52,6 +52,31 @@ info() {
   msg "INFO" "${1:-}"
 }
 
+input_var() {
+  local name=${1:-}
+  local default=${!name:-}
+  local question=${2:-}
+  local label=${3:-}
+
+  info "$question"
+  local value=$(gum input --value "$default")
+  info "$label: $value"
+
+  if [[ "$value" == "$default" ]]; then
+    return 0
+  fi
+
+  if [[ -z "$value" ]]; then
+    err "Value cannot be empty."
+    return 1
+  fi
+  
+  declare -g "$name"="$value"
+  echo "export $name=\"$value\"" >> "${XDG_CACHE_HOME}/.exports"
+
+  return 0
+}
+
 is_mac() {
   [[ "$OS" == "Darwin" ]] && [[ "$ARCH" == "arm64" ]]
 }
@@ -100,7 +125,7 @@ make_dir() {
 }
 
 msg() {
-  printf "[%s] %s\n" "${1^^}" "$2"  
+  printf "[%s] %s\n" "${1^^}" "$2"
 }
 
 warn() {
