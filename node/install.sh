@@ -20,4 +20,18 @@ fi
 
 if ! has_command pnpm; then
   npm install -g pnpm@latest-10
+  pnpm setup
 fi
+
+if ! has_command bash-language-server; then
+  pnpm add -g bash-language-server
+fi
+
+if ! has_command tsc; then
+  pnpm add -g typescript typescript-language-server
+fi
+
+if ! has_command vscode-langservers-extracted; then
+  pnpm add -g vscode-langservers-extracted
+fi
+

@@ -22,7 +22,7 @@ if ! is_ubuntu && ! is_mac; then
   exit 1
 fi
 
-modules=("essentials" "fonts" "git" "ssh" "zsh" "ghostty" "tmux" "nvim" "node" "zig")
+modules=("essentials" "fonts" "git" "ssh" "zsh" "ghostty" "tmux" "lua" "node" "zig" "nvim")
 
 for module_name in "${modules[@]}"; do
   MODULE_NAME="$module_name"

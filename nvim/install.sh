@@ -2,8 +2,10 @@
 
 # Useful links:
 # https://github.com/neovim/neovim/blob/master/INSTALL.md
+# https://vonheikemen.github.io/learn-nvim/feature/lsp-setup.html
 
 NEOVIM_VERSION=v0.11.4
+NEOVIM_HOME="$XDG_CONFIG_HOME/nvim"
 
 if ! has_command nvim || [[ "$NEOVIM_VERSION" != "$(nvim --version | head -n 1 | awk '{print $2}')" ]]; then
   output_dir="$XDG_OPT_HOME/nvim"
@@ -30,4 +32,11 @@ if ! has_command nvim || [[ "$NEOVIM_VERSION" != "$(nvim --version | head -n 1 |
   fi
 fi
 
-link "$MODULE_DIR/init.lua" "$XDG_CONFIG_HOME/nvim/init.lua"
+lsp_package_dir="$NEOVIM_HOME/pack/nvim/start/nvim-lspconfig"
+
+if [[ ! -d "$lsp_package_dir" ]]; then
+  make_dir "$(dirname "$lsp_package_dir")"
+  git clone https://github.com/neovim/nvim-lspconfig "$lsp_package_dir"
+fi
+
+link "$MODULE_DIR/init.lua" "$NEOVIM_HOME/init.lua"
