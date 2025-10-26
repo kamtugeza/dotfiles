@@ -6,16 +6,22 @@ backup() {
 
   make_dir "$(dirname "$backup_path")"
 
-  if [[ -d "$path" && ! -L "$path" ]]; then
-    flags="-ar"
+  if [[ -e $path && ! -L "$path" ]]; then
+    warn "Found: $path"
+
+    if [[ -d "$path" ]]; then
+      flags="-ar"
+    fi
+
+    if ! output=$(cp $flags -- "$path" "$backup_path" 2>&1); then
+      err "$output"
+      return 1
+    fi
+
+    info "Backup: $path -> $backup_path"
   fi
 
-  if ! output=$(cp "$flags" -- "$path" "$backup_path" 2>&1); then
-    err "$output"
-    return 1
-  fi
-
-  info "Backup: $path -> $backup_path"
+  rm -fr -- "${path%/}"
 
   return 0
 }
@@ -94,21 +100,8 @@ link() {
     return 1
   fi
 
-  if [[ -e "$target" && ! -L "$target" ]]; then
-    warn "Found: $target"
-    backup "$target"
-  fi
-
-  if [[ -d "$source" && ! -L "$source" ]]; then 
-    local target_dir="$target"
-  elif [[ -f "$source" && ! -L "$source" ]]; then
-    local target_dir="$(dirname "$target")"
-  else
-    err "Source is neither a file nor a directory: $source"
-    return 1
-  fi
-
-  make_dir "$target_dir"
+  backup "$target"
+  make_dir "$(dirname "$target")"
   ln -sf "$source" "$target"
   info "Linked: $source -> $target"
 }
