@@ -19,8 +19,9 @@ if ! has_command nvm; then
 fi
 
 if ! has_command pnpm; then
-  npm install -g pnpm@latest-10
-  pnpm setup
+  npm install -g pnpm
+  pnpm config set global-bin-dir "$(npm prefix -g)/bin"
+  pnpm config set global-dir "$(npm prefix -g)/pnpm-global"
 fi
 
 if ! has_command bash-language-server; then
