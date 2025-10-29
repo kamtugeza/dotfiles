@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Useful links:
-# https://github.com/neovim/neovim/blob/master/INSTALL.md
-# https://vonheikemen.github.io/learn-nvim/feature/lsp-setup.html
-
 NEOVIM_VERSION=v0.11.4
 NEOVIM_HOME="$XDG_CONFIG_HOME/nvim"
 
@@ -32,11 +28,16 @@ if ! has_command nvim || [[ "$NEOVIM_VERSION" != "$(nvim --version | head -n 1 |
   fi
 fi
 
-lsp_package_dir="$NEOVIM_HOME/pack/nvim/start/nvim-lspconfig"
+if ! has_command rg; then
+  if is_mac; then
+    brew install ripgrep
+  fi
 
-if [[ ! -d "$lsp_package_dir" ]]; then
-  make_dir "$(dirname "$lsp_package_dir")"
-  git clone https://github.com/neovim/nvim-lspconfig "$lsp_package_dir"
+  if is_ubuntu; then
+    sudo apt-get install ripgrep
+  fi
 fi
 
+link "$MODULE_DIR/lua" "$NEOVIM_HOME/lua"
 link "$MODULE_DIR/init.lua" "$NEOVIM_HOME/init.lua"
+
