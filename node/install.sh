@@ -20,8 +20,8 @@ fi
 
 if ! has_command pnpm; then
   npm install -g pnpm
-  pnpm config set global-bin-dir "$(npm prefix -g)/bin"
-  pnpm config set global-dir "$(npm prefix -g)/pnpm-global"
+  pnpm config set global-bin-dir "$NVM_BIN"
+  pnpm config set global-dir "$(dirname "$NVM_BIN")/pnpm-global"
 fi
 
 if ! has_command bash-language-server; then
