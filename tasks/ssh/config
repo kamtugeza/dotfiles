@@ -1,0 +1,14 @@
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/theoleksii
+
+Host codeberg.org
+  HostName codeberg.org
+  User git
+  IdentityFile ~/.ssh/theoleksii
+
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  IgnoreUnknown UseKeychain

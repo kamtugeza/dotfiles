@@ -1,0 +1,17 @@
+adjust-cell-height = 20%
+background-opacity = 0.98
+background-blur = 20
+font-family = "JetBrainsMonoNL Nerd Font Mono"
+font-family-bold = "JetBrainsMonoNL Nerd Font Mono"
+font-family-italic = "JetBrainsMonoNL Nerd Font Mono"
+font-family-bold-italic = "JetBrainsMonoNL Nerd Font Mono"
+font-size = 13
+macos-icon = blueprint
+
+# NOTE: This only works reliably if the macOS Input Source is set to "U.S."
+# If set to "ABC", macOS may still intercept Option keys to type symbols like ∆.
+macos-option-as-alt = true
+
+theme = "Ghostty Default Style Dark"
+window-title-font-family = "JetBrainsMonoNL Nerd Font Mono"
+

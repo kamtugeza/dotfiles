@@ -1,0 +1,16 @@
+{
+    "editor.formatOnSave": true,
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        100,
+        120
+    ],
+    "editor.minimap.enabled": false,
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontSize": 13,
+    "editor.fontFamily": "'JetBrainsMonoNL Nerd Font Mono', monospace",
+    "editor.lineHeight": 1.64,
+    "files.autoSave": "onFocusChange"
+}
