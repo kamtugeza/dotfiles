@@ -55,6 +55,7 @@ has_cask betterdisplay || brew install --cask betterdisplay
 has_cask chatgpt || brew install --cask chatgpt
 has_cask google-chrome || brew install --cask google-chrome
 has_cask obsidian || brew install --cask obsidian
+has_cask todoist-app || brew install --cask todoist-app
 
 has_command gum || brew install gum
 
