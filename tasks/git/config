@@ -8,6 +8,7 @@
   default = current
 
 [alias]
+  b = "!f() { git switch \"$(git branch --format='%(refname:short)' | fzf --query=\"$*\")\"; }; f"
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
 [include]
