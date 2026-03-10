@@ -1,6 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
-  config = function()
+  config = function() 
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp', { clear = true }),
@@ -23,6 +23,10 @@ return {
       end,
 
     })
+
+    -- Astro LSP requires extra configuration when TypeScript is installed globally.
+    -- To avoid this and keep the setup simple, install TypeScript locally in each Astro project.
+    vim.lsp.enable('astro')
 
     vim.lsp.enable('bashls')
     vim.lsp.enable('codebook')

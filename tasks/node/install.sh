@@ -28,6 +28,7 @@ if ! has_command pnpm; then
   pnpm config set global-dir "$(dirname "${NVM_BIN}")/pnpm-global"
 fi
 
+has_command astro-ls || pnpm add -g @astrojs/language-server
 has_command bash-language-server || pnpm add -g bash-language-server
 has_command tsc || pnpm add -g typescript @vtsls/language-server
 has_command vscode-html-language-server || pnpm add -g vscode-langservers-extracted
