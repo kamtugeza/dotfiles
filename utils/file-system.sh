@@ -1,5 +1,3 @@
-source "${DOTFILES_HOME}/utils/logger.sh"
-
 backup() {
   local src="${1%/}"
   local src_short="${1/#$HOME/~}"
@@ -55,8 +53,10 @@ link() {
 
 make_dir() {
   for dir in "$@"; do
-    if ! mkdir -p "${dir}"; then
-      log_err "make_dir: ${dir}: failed to create directory"
+    if mkdir -p "${dir}"; then
+      log_info "make_dir: ${dir}"
+    else
+      log_err "make_dir: ${dir}: failed"
       return 1
     fi
   done
