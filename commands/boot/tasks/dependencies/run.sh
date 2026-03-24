@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 if [[ "${SYSTEM_NAME}" == "arch" ]]; then
-  sudo pacman -Syu --needed --noconfirm \
+  sudo pacman -S --needed --noconfirm \
+    base-devel \
     codebook-lsp \
     fzf \
     git \
@@ -15,6 +16,7 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     opencode \
     openssh \
     ripgrep \
+    tar \
     ufw \
     zig \
     zls \
@@ -22,30 +24,45 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     zsh \
     which 
 
+  if ! has_command yay; then
+    log_info "dependencies: start yay installation..."
+    YAY_PATH="${HOME}/Downloads/yay"
+    git clone https://aur.archlinux.org/yay.git "${YAY_PATH}"
+    makepkg -sir --dir "${YAY_PATH}" --needed --noconfirm
+    rm -rf "${YAY_PATH}"
+    yay -Y --gendb
+    log_success "dependencies: installed yay"
+  fi
+
+  yay -S --needed --noconfirm \
+    google-chrome \
+    zen-browser-bin
+
 elif [[ "${SYSTEM_NAME}" == "mac" ]]; then
   if ! has_command brew; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
-
-  brew install --cask \
-    betterdisplay \
-    discord \
-    ghostty \
-    google-chrome \
-    lua \
-    lua-language-server \
-    karabiner-elements \
-    obsidian \
-    todoist-app
 
   brew install \
     anomalyco/tap/opencode \
     codebook-lsp \
     fzf \
     gum \
+    lua \
+    lua-language-server \
     neovim \
     ripgrep \
     zig \
     zls \
     zoxide
+
+  brew install --cask \
+    betterdisplay \
+    discord \
+    ghostty \
+    google-chrome \
+    karabiner-elements \
+    obsidian \
+    todoist-app
 fi
+

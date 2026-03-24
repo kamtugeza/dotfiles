@@ -9,6 +9,7 @@ dirs=(
     "${XDG_OPT_HOME}"
     "${XDG_STATE_HOME}"
     "${ZSH_CONFIG_HOME}"
+    "${HOME}/Downloads"
 )
 
 make_dir "${dirs[@]}"
