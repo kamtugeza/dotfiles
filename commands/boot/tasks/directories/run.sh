@@ -12,5 +12,6 @@ dirs=(
     "${HOME}/Downloads"
 )
 
+log_info "directories: create missed directories"
 make_dir "${dirs[@]}"
 

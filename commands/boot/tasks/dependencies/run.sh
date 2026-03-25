@@ -7,6 +7,7 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     fzf \
     git \
     ghostty \
+    grub-btrfs \
     gum \
     inetutils \
     less \
@@ -15,6 +16,9 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     neovim \
     opencode \
     openssh \
+    sed \
+    snapper \
+    snap-pac \
     ripgrep \
     tar \
     ufw \

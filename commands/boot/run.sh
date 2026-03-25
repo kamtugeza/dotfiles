@@ -3,6 +3,7 @@
 # Core
 run_task "dependencies"
 run_task "directories"
+run_task "snapshots"
 run_task "network"
 
 # Desktop Env
