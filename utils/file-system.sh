@@ -53,9 +53,7 @@ link() {
 
 make_dir() {
   for dir in "$@"; do
-    if mkdir -p "${dir}"; then
-      log_info "make_dir: ${dir}"
-    else
+    if ! mkdir -p "${dir}"; then
       log_err "make_dir: ${dir}: failed"
       return 1
     fi
