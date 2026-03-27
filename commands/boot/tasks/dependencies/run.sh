@@ -3,6 +3,7 @@
 if [[ "${SYSTEM_NAME}" == "arch" ]]; then
   sudo pacman -S --needed --noconfirm \
     base-devel \
+    cliphist \
     codebook-lsp \
     fzf \
     git \
@@ -26,7 +27,8 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     zls \
     zoxide \
     zsh \
-    which 
+    which \
+    wofi
 
   if ! has_command yay; then
     log_info "dependencies: start yay installation..."
