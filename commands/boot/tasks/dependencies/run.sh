@@ -3,6 +3,7 @@
 if [[ "${SYSTEM_NAME}" == "arch" ]]; then
   sudo pacman -S --needed --noconfirm \
     base-devel \
+    btop \
     cliphist \
     codebook-lsp \
     fzf \
