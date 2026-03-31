@@ -19,6 +19,7 @@ return {
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
         vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror message' })
+        vim.keymap.set('n', '<leader>s', function() vim.cmd('w') end, { desc = '[S]ave buffer' })
         vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix' })
       end,
 
@@ -29,6 +30,7 @@ return {
     vim.lsp.enable('astro')
 
     vim.lsp.enable('bashls')
+    vim.lsp.enable('biome')
     vim.lsp.enable('codebook')
     vim.lsp.enable('cssls')
     vim.lsp.enable('html')

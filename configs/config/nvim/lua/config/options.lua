@@ -14,6 +14,7 @@ vim.o.autoread = true
 vim.o.breakindent = true
 vim.o.confirm = true
 vim.o.cursorline = true
+vim.o.exrc = true
 vim.o.expandtab = true
 vim.o.ignorecase = true
 vim.o.inccommand = 'split'

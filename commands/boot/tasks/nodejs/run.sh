@@ -26,8 +26,9 @@ fi
 
 pnpm add -g \
   @astrojs/language-server \
+  @biomejs/biome \
+  @vtsls/language-server \
   bash-language-server \
   typescript \
-  @vtsls/language-server \
   vscode-langservers-extracted
 
