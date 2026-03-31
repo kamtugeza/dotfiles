@@ -7,9 +7,9 @@ run_task "snapshots"
 run_task "network"
 
 # Desktop Env
-run_task "clipboard"
 run_task "fonts"
 run_task "keyboard"
+run_task "hyprland"
 
 # Dev Env
 run_task "shell"

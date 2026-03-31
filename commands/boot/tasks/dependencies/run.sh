@@ -21,6 +21,7 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     sed \
     snapper \
     snap-pac \
+    swaybg \
     ripgrep \
     tar \
     ufw \
