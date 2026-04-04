@@ -18,6 +18,7 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     neovim \
     opencode \
     openssh \
+    rclone \
     sed \
     snapper \
     snap-pac \
