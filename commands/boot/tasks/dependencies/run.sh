@@ -16,6 +16,7 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     lua \
     lua-language-server \
     neovim \
+    noto-fonts-emoji \
     opencode \
     openssh \
     rclone \
@@ -45,6 +46,8 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
 
   yay -S --needed --noconfirm \
     google-chrome \
+    hypremoji \
+    ttf-apple-emoji \
     zen-browser-bin
 
 elif [[ "${SYSTEM_NAME}" == "mac" ]]; then

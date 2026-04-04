@@ -5,6 +5,10 @@ font-family = "JetBrainsMonoNL Nerd Font Mono"
 font-family-bold = "JetBrainsMonoNL Nerd Font Mono"
 font-family-italic = "JetBrainsMonoNL Nerd Font Mono"
 font-family-bold-italic = "JetBrainsMonoNL Nerd Font Mono"
+
+# NOTE: Force Apple Color Emoji on Linux because Ghostty prefers Noto Emoji by default
+font-family = "Apple Color Emoji"
+
 font-size = 13
 macos-icon = blueprint
 
@@ -14,4 +18,3 @@ macos-option-as-alt = true
 
 theme = Catppuccin Macchiato
 window-title-font-family = "JetBrainsMonoNL Nerd Font Mono"
-
