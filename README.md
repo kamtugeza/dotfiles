@@ -6,9 +6,11 @@ This repository is my personal arsenal of dotfiles and scripts to spin up a deve
 
 ## Kickstart
 
-To get started, clone the repository and run the installation script:
+The only requirement is to install `git`. Everything else is set up automatically.
+
+So, to get started, clone the repository and run the boot command:
 
 ```bash
-git clone git@github.com:kamtugeza/dotfiles.git "${HOME}/.dotfiles" && bash "${HOME}/.dotfiles/install.sh"
+git clone https://codeberg.org/theoleksii/dotfiles.git "${HOME}/.dotfiles" && bash "${HOME}/.dotfiles" boot
 ```
 
