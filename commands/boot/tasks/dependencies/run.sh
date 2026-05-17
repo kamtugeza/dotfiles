@@ -13,6 +13,7 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     gum \
     inetutils \
     less \
+    libnotify \
     lua \
     lua-language-server \
     neovim \
@@ -24,6 +25,7 @@ if [[ "${SYSTEM_NAME}" == "arch" ]]; then
     snapper \
     snap-pac \
     swaybg \
+    swaync \
     ripgrep \
     tar \
     ufw \
