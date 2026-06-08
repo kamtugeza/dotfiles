@@ -1,0 +1,16 @@
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_BIN_HOME="${HOME}/.local/bin"
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_LIB_HOME="${HOME}/.local/lib"
+export XDG_OPT_HOME="${HOME}/.local/opt"
+export XDG_STATE_HOME="${HOME}/.local/state"
+
+export AGENT_HOME="${HOME}/.agents"
+export DOTFILES_HOME="${HOME}/.dotfiles"
+export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
+
+# Home directory for git-cloned dependencies
+export REPOS_HOME="${XDG_DATA_HOME}/repos"
+
+export ZSH_CONFIG_HOME="${XDG_CONFIG_HOME}/zsh"

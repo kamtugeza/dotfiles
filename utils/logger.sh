@@ -31,3 +31,12 @@ log_err() {
   _msg "ERR" "${RED}" "$1"
   exit 1
 }
+
+log_task_finish() {
+  log_success "finished: ${1:-}"
+}
+
+log_task_start() {
+  log_info "starting: ${1:-}"
+}
+
