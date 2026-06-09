@@ -1,16 +1,18 @@
 # .dotfiles
 
-Sooner or later, every developer gets tired of wrestling with their local setup: manual installations, missing dependencies, "it worked on my previous setup" headaches. That's the moment you stop fighting and start automating.
+My personal dotfiles setup for getting a machine ready fast, without the usual installation drama.
 
-This repository is my personal arsenal of dotfiles and scripts to spin up a development environment in minutes, not days. 🤠
+This repo is how I bootstrap my machines without wasting time re-learning my own setup every six months. It covers the basics, the nice-to-haves, and a few sharp edges I’ve already sanded down.
+
+## What’s inside
+
+- `shared/` for stuff I want the same everywhere
+- `arch/` for Arch Linux-specific setup
+- `mac/` for macOS-specific setup
 
 ## Kickstart
 
-The only requirement is to install `git`. Everything else is set up automatically.
+Install `git`, clone the repo, then follow the guide for your platform.
 
-So, to get started, clone the repository and run the boot command:
-
-```bash
-git clone https://codeberg.org/theoleksii/dotfiles.git "${HOME}/.dotfiles" && bash "${HOME}/.dotfiles" boot
-```
-
+- [Arch Linux](./arch/README.md)
+- [macOS](./mac/README.md)
