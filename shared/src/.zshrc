@@ -8,6 +8,10 @@ source "${ZSH_CONFIG_HOME}/completion.sh"
 source "${ZSH_CONFIG_HOME}/history.sh"
 source "${ZSH_CONFIG_HOME}/prompt.sh"
 
+if [[ -f "${ZSH_CONFIG_HOME}/os.sh" ]]; then
+  source "${ZSH_CONFIG_HOME}/os.sh"
+fi
+
 # Fuzzy Finder
 source <(fzf --zsh)
 export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden'

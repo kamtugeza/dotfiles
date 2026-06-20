@@ -55,6 +55,12 @@ if $INSTALL_DEPS; then
 
   if ! has_command brew; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    if [[ -x "/opt/homebrew/bin/brew" ]]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    else 
+      log_err "Homebrew is not available in PATH"
+    fi
   fi
 
   brew install "${brew_formula_deps[@]}"
@@ -88,11 +94,12 @@ if [[ "${COMPUTER_NAME_INPUT}" != "${COMPUTER_NAME}" ]]; then
   sudo scutil --set ComputerName "${COMPUTER_NAME_INPUT}"
 fi
 
-HOST_NAME="$(scutil --get HostName)"
-HOST_NAME_INPUT=$(ask_plain "host-name" "What is your host name?" "${HOST_NAME}" 1)
-if [[ "${HOST_NAME_INPUT}" != "${HOST_NAME}" ]]; then
-  sudo scutil --set LocalHostName "${HOST_NAME_INPUT}"
-  sudo scutil --set HostName "${HOST_NAME_INPUT}"
+# On a clean macOS installation, HostName is not set by default, so we use LocalHostName instead.
+LOCAL_HOST_NAME="$(scutil --get LocalHostName)"
+LOCAL_HOST_NAME_INPUT=$(ask_plain "local-host-name" "What is your local host name?" "${LOCAL_HOST_NAME}" 1)
+if [[ "${LOCAL_HOST_NAME_INPUT}" != "${LOCAL_HOST_NAME}" ]]; then
+  sudo scutil --set LocalHostName "${LOCAL_HOST_NAME_INPUT}"
+  sudo scutil --set HostName "${LOCAL_HOST_NAME_INPUT}.local"
 fi
 
 log_task_finish "network"
@@ -103,11 +110,11 @@ log_task_finish "network"
 
 log_task_start "fonts"
 
-SOURCE_DIR="${DOTFILES_HOME}/shared/.local/share/fonts"
+SOURCE_DIR="${DOTFILES_HOME}/shared/src/.local/share/fonts"
 TARGET_DIR="${HOME}/Library/Fonts"
 
 shopt -s nullglob
-for font_path in "${SOURCE_DIR}"/*.ttf; do
+for font_path in "${SOURCE_DIR}"/*.{otf,ttf}; do
   font_name=$(basename "${font_path}")
   cp "${font_path}" "${TARGET_DIR}/${font_name}"
   log_info "copied: ${TARGET_DIR/#$HOME/~}/${font_name}"
