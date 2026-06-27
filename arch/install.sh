@@ -282,7 +282,7 @@ if ! has_command pnpm; then
 fi
 
 if $INSTALL_DEPS; then
-  pnpm add -g "${shared_node_deps[@]}"
+  pnpm add -g --ignore-scripts "${shared_node_deps[@]}"
 fi
 
 log_task_finish "nodejs"

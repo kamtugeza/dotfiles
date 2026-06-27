@@ -8,6 +8,7 @@ shared_shell_deps=(
 shared_node_deps=(
   @astrojs/language-server
   @biomejs/biome
+  @earendil-works/pi-coding-agentk
   @vtsls/language-server
   bash-language-server
   typescript
