@@ -7,6 +7,7 @@ pacman_deps=(
   btop
   cliphist
   codebook-lsp
+  fd
   fzf
   git
   ghostty

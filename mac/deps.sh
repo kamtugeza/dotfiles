@@ -5,7 +5,9 @@ source "${DOTFILES_HOME}/shared/deps.sh"
 brew_formula_deps=(
   anomalyco/tap/opencode
   bash
+  btop
   codebook-lsp
+  fd
   fzf
   gum
   lua

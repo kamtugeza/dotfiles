@@ -33,6 +33,7 @@ dirs=(
   "${XDG_STATE_HOME}"
   "${ZSH_CONFIG_HOME}"
   "${HOME}/Downloads"
+  "${CODECRAFT_HOME}"
   "${REPOS_HOME}"
 )
 
