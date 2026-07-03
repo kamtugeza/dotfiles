@@ -2,6 +2,8 @@
 
 source "${HOME}/.exports"
 
+export PATH="${XDG_BIN_HOME}:${PATH}"
+
 # General
 source "${ZSH_CONFIG_HOME}/aliases.sh"
 source "${ZSH_CONFIG_HOME}/completion.sh"
@@ -23,3 +25,8 @@ source <(zoxide init zsh --cmd cd)
 # Node
 [ -s "${NVM_DIR}/nvm.sh" ] && \. "${NVM_DIR}/nvm.sh"
 [ -s "${NVM_DIR}/bash_completion" ] && \. "${NVM_DIR}/bash_completion"
+
+# Projects
+for module in "${ZSH_CONFIG_HOME}"/modules/*.sh(Non); do
+  source "${module}"
+done

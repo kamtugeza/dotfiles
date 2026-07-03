@@ -22,6 +22,10 @@ link_dir() {
   local target_path
 
   for file_path in "${source_path}"/*; do
+    if [[ "$(basename -- "${file_path}")" == ".DS_Store" ]]; then
+      continue
+    fi
+
     if [[ -d "${file_path}" ]]; then
       link_dir "${base_path}" "${file_path}"
       continue
