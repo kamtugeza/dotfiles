@@ -32,7 +32,6 @@ dirs=(
   "${XDG_STATE_HOME}"
   "${ZSH_CONFIG_HOME}"
   "${HOME}/Downloads"
-  "${CODECRAFT_HOME}"
   "${REPOS_HOME}"
 )
 
@@ -271,19 +270,20 @@ if ! has_command nvm; then
   git -C "${NVM_DIR}" -c advice.detachedHead=false checkout "${latest_tag}"
 
   \. "${NVM_DIR}/nvm.sh"
-
-  nvm install --lts
 fi
+
+nvm install --lts
 
 if ! has_command pnpm; then
   log_info "installing pnpm"
   npm install -g pnpm
-  pnpm config set global-bin-dir "${NVM_BIN}"
-  pnpm config set global-dir "$(dirname "${NVM_BIN}")/pnpm-global"
 fi
 
+pnpm config set global-bin-dir "${NVM_BIN}"
+pnpm config set global-dir "$(dirname "${NVM_BIN}")/pnpm-global"
+
 if $INSTALL_DEPS; then
-  pnpm add -g --ignore-scripts "${shared_node_deps[@]}"
+  pnpm add -g "${shared_node_deps[@]}"
 fi
 
 log_task_finish "nodejs"
