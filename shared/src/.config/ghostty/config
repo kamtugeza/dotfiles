@@ -13,6 +13,8 @@ macos-icon = blueprint
 # If set to "ABC", macOS may still intercept Option keys to type symbols like ∆.
 macos-option-as-alt = true
 
+scrollback-limit = 4294967295
+
 theme = Catppuccin Macchiato
 window-title-font-family = "JetBrainsMonoNL Nerd Font Mono"
 
