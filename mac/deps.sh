@@ -13,6 +13,7 @@ brew_formula_deps=(
   lua
   lua-language-server
   neovim
+  nginx
   ripgrep
   zig
   zls
