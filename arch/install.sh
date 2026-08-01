@@ -71,6 +71,9 @@ log_task_start "dotfiles"
 
 shopt -s dotglob nullglob
 link_dir "${DOTFILES_HOME}/shared/src" "${DOTFILES_HOME}/shared/src"
+
+
+
 link_dir "${MODULE_DIR}/src" "${MODULE_DIR}/src"
 shopt -u dotglob nullglob
 
@@ -238,14 +241,20 @@ if [[ -f "${HOME}/.gitconfig" ]]; then
 fi
 
 PERSONAL_PATH="${XDG_CONFIG_HOME}/git/personal"
-backup "${PERSONAL_PATH}"
-> "${PERSONAL_PATH}"
+TEMP_PERSONAL_PATH="$(mktemp)"
 
 USER_NAME=$(ask_plain "git-user-name" "What is your full name?" "" 1)
 USER_EMAIL=$(ask_plain "git-user-email" "What is your email?" "" 1)
 
-git config --file "${PERSONAL_PATH}" user.name "${USER_NAME}"
-git config --file "${PERSONAL_PATH}" user.email "${USER_EMAIL}"
+git config --file "${TEMP_PERSONAL_PATH}" user.name "${USER_NAME}"
+git config --file "${TEMP_PERSONAL_PATH}" user.email "${USER_EMAIL}"
+
+if [[ ! -f "${PERSONAL_PATH}" ]] || ! cmp -s -- "${TEMP_PERSONAL_PATH}" "${PERSONAL_PATH}"; then
+  backup "${PERSONAL_PATH}"
+  mv "${TEMP_PERSONAL_PATH}" "${PERSONAL_PATH}"
+else
+  rm "${TEMP_PERSONAL_PATH}"
+fi
 
 log_task_finish "vcs"
 
