@@ -14,3 +14,7 @@ shared_node_deps=(
   typescript
   vscode-langservers-extracted
 )
+
+shared_pi_deps=(
+  npm:pi-permission-system
+)

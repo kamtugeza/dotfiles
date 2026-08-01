@@ -79,6 +79,7 @@ log_task_start "dotfiles"
 shopt -s dotglob nullglob
 link_files "${DOTFILES_HOME}/shared/src" "${DOTFILES_HOME}/shared/src"
 link_files "${MODULE_DIR}/src" "${MODULE_DIR}/src"
+link_dir "${XDG_CONFIG_HOME}/pi" "${HOME}/.pi"
 shopt -u dotglob nullglob
 
 log_task_finish "dotfiles"
@@ -237,6 +238,20 @@ if $INSTALL_DEPS; then
 fi
 
 log_task_finish "nodejs"
+
+
+
+
+
+
+
+log_task_start "pi"
+  if $INSTALL_DEPS; then
+    pi install "${shared_pi_deps[@]}"
+  fi
+log_task_finish "pi"
+
+
 
 
 
