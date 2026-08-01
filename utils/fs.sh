@@ -5,16 +5,14 @@ source "${DOTFILES_HOME}/utils/logger.sh"
 backup() {
   local source_path="${1}"
 
-  if [[ ! -f "${source_path}" || -L "${source_path}" ]]; then
-    return 0
-  fi
+  [[ ! -f "${source_path}" || -L "${source_path}" ]] && return 0
 
   if ! mv "${source_path}" "${source_path}.$(date +%Y-%m-%dT%H-%M-%S)"; then
     log_err "failed to backup: ${source_path}"
   fi
 }
 
-link_dir() {
+link_files() {
   local base_path="${1}"
   local source_path="${2}"
   local file_path
@@ -27,7 +25,7 @@ link_dir() {
     fi
 
     if [[ -d "${file_path}" ]]; then
-      link_dir "${base_path}" "${file_path}"
+      link_files "${base_path}" "${file_path}"
       continue
     fi
 
@@ -47,19 +45,14 @@ link_file() {
   local target_path="${2}"
   local target_dir="$(dirname -- "${target_path}")"
 
-  if [[ -d "${source_path}" ]]; then
-    log_err "source is a directory: ${source_path}"
-  fi
-
-  if [[ -d "${target_path}" ]]; then
-    log_err "target is a directory: ${target_path}"
-  fi
+  [[ -d "${source_path}" ]] && log_err "source is a directory: ${source_path}"
+  [[ -d "${target_path}" ]] && log_err "target is a directory: ${target_path}"
 
   if ! mkdir -p "${target_dir}"; then
     log_err "failed to create directory: ${target_dir}"
   fi
 
-  backup "$target_path"
+  backup "${target_path}"
 
   if ! ln -sf "${source_path}" "${target_path}"; then
     log_err "failed to link: ${target_path}"

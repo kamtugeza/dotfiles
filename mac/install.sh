@@ -77,8 +77,8 @@ fi
 log_task_start "dotfiles"
 
 shopt -s dotglob nullglob
-link_dir "${DOTFILES_HOME}/shared/src" "${DOTFILES_HOME}/shared/src"
-link_dir "${MODULE_DIR}/src" "${MODULE_DIR}/src"
+link_files "${DOTFILES_HOME}/shared/src" "${DOTFILES_HOME}/shared/src"
+link_files "${MODULE_DIR}/src" "${MODULE_DIR}/src"
 shopt -u dotglob nullglob
 
 log_task_finish "dotfiles"
