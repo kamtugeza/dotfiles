@@ -7,6 +7,7 @@ pacman_deps=(
   btop
   cliphist
   codebook-lsp
+  docker-compose
   fd
   fzf
   git
@@ -22,6 +23,7 @@ pacman_deps=(
   noto-fonts-emoji
   opencode
   openssh
+  podman
   rclone
   sed
   snapper
