@@ -25,12 +25,14 @@ pacman_deps=(
   openssh
   podman
   rclone
+  ripgrep
   sed
   snapper
   snap-pac
   swaybg
   swaync
   ripgrep
+  socat
   tar
   ufw
   zig

@@ -1,0 +1,42 @@
+{
+  "enabled": true,
+  "permissionPromptTimeoutSeconds": 600,
+  "allowBrowserProcess": false,
+  "network": {
+    "allowLocalBinding": true,
+    "allowAllUnixSockets": true,
+    "allowUnauthenticatedSocksProxy": true,
+    "allowedDomains": [],
+    "deniedDomains": []
+  },
+  "filesystem": {
+    "denyRead": [
+      "/Users",
+      "/home",
+      ".env",
+      ".env.*",
+      ".npmrc",
+      ".yarnrc",
+      "*.pem",
+      "*.key"
+    ],
+    "allowRead": [
+      ".",
+      "./.agents",
+      "~/.config/pi",
+      "~/.local/share/pi"
+    ],
+    "allowWrite": [
+      ".",
+      "/tmp"
+    ],
+    "denyWrite": [
+      ".env",
+      ".env.*",
+      ".npmrc",
+      ".yarnrc",
+      "*.pem",
+      "*.key"
+    ]
+  }
+}

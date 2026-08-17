@@ -16,5 +16,5 @@ shared_node_deps=(
 )
 
 shared_pi_deps=(
-  npm:pi-permission-system
+  npm:pi-sandbox
 )
