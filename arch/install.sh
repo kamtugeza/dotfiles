@@ -46,7 +46,7 @@ done
 if $INSTALL_DEPS; then
   log_task_start "dependencies"
 
-  sudo pacman -S --needed --noconfirm "${pacman_deps[@]}"
+  sudo pacman -Syu --needed --noconfirm "${pacman_deps[@]}"
 
   if ! has_command yay; then
     log_info "dependencies: start yay installation..."
