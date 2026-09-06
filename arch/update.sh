@@ -45,11 +45,23 @@ log_task_finish "dependencies"
 
 log_task_start "shells"
 
-if $INSTALL_DEPS; then
-  install_git_deps shared_shell_deps
-fi
+install_git_deps shared_shell_deps
 
 log_task_finish "shells"
+
+
+
+
+
+
+
+log_task_start "antivirus"
+
+sudo systemctl stop clamav-freshclam.service
+sudo freshclam
+sudo systemctl start clamav-freshclam.service
+
+log_task_finish "antivirus"
 
 
 
@@ -62,9 +74,7 @@ log_task_start "nodejs"
 pnpm config set global-bin-dir "${NVM_BIN}"
 pnpm config set global-dir "$(dirname "${NVM_BIN}")/pnpm-global"
 
-if $INSTALL_DEPS; then
-  pnpm add -g "${shared_node_deps[@]}"
-fi
+pnpm add -g "${shared_node_deps[@]}"
 
 log_task_finish "nodejs"
 
@@ -76,9 +86,7 @@ log_task_finish "nodejs"
 
 log_task_start "pi"
 
-if $INSTALL_DEPS; then
-  pi install "${shared_pi_deps[@]}"
-fi
+pi install "${shared_pi_deps[@]}"
 
 log_task_finish "pi"
 

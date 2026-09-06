@@ -22,6 +22,16 @@ fi
 
 
 
+
+
+log_info "configuring environment"
+
+
+
+
+
+
+
 dirs=(
   "${XDG_BIN_HOME}"
   "${XDG_CACHE_HOME}"
@@ -38,6 +48,8 @@ dirs=(
 for dir in "${dirs[@]}"; do
   mkdir -p "${dir}"
 done
+
+
 
 
 
@@ -67,6 +79,8 @@ fi
 
 
 
+
+
 log_task_start "dotfiles"
 
 shopt -s dotglob nullglob
@@ -76,6 +90,8 @@ link_dir "${XDG_CONFIG_HOME}/pi" "${HOME}/.pi"
 shopt -u dotglob nullglob
 
 log_task_finish "dotfiles"
+
+
 
 
 
@@ -140,6 +156,8 @@ log_task_finish "snapshots"
 
 
 
+
+
 log_task_start "network"
 
 HOSTNAME=$(hostnamectl --static)
@@ -166,6 +184,8 @@ log_task_finish "network"
 
 
 
+
+
 log_task_start "fonts"
 
 log_info "fonts: refreshing cache..."
@@ -181,6 +201,8 @@ else
 fi
 
 log_task_finish "fonts"
+
+
 
 
 
@@ -210,6 +232,20 @@ log_task_finish "shells"
 
 
 
+
+
+log_task_start "antivirus"
+
+sudo systemctl enable --now clamav-freshclam.service
+
+log_task_finish "antivirus"
+
+
+
+
+
+
+
 log_task_start "ssh"
 
 SSH_HOME="${HOME}/.ssh"
@@ -227,6 +263,9 @@ if [[ ! -f "${SSH_KEY}" ]]; then
 fi
 
 log_task_finish "ssh"
+
+
+
 
 
 
@@ -255,6 +294,8 @@ else
 fi
 
 log_task_finish "vcs"
+
+
 
 
 
@@ -312,9 +353,11 @@ log_task_finish "containers"
 
 
 log_task_start "pi"
-  if $INSTALL_DEPS; then
-    pi install "${shared_pi_deps[@]}"
-  fi
+
+if $INSTALL_DEPS; then
+  pi install "${shared_pi_deps[@]}"
+fi
+
 log_task_finish "pi"
 
 

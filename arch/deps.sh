@@ -5,6 +5,7 @@ source "${DOTFILES_HOME}/shared/deps.sh"
 pacman_deps=(
   base-devel
   btop
+  clamav
   cliphist
   codebook-lsp
   docker-compose

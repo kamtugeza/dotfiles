@@ -45,7 +45,11 @@ done
 
 
 
+
+
 log_info "configuring environment"
+
+
 
 
 
@@ -74,6 +78,8 @@ fi
 
 
 
+
+
 log_task_start "dotfiles"
 
 shopt -s dotglob nullglob
@@ -83,6 +89,8 @@ link_dir "${XDG_CONFIG_HOME}/pi" "${HOME}/.pi"
 shopt -u dotglob nullglob
 
 log_task_finish "dotfiles"
+
+
 
 
 
@@ -110,6 +118,8 @@ log_task_finish "network"
 
 
 
+
+
 log_task_start "fonts"
 
 SOURCE_DIR="${DOTFILES_HOME}/shared/src/.local/share/fonts"
@@ -124,6 +134,8 @@ done
 shopt -u nullglob
 
 log_task_finish "fonts"
+
+
 
 
 
@@ -153,6 +165,8 @@ log_task_finish "shells"
 
 
 
+
+
 log_task_start "ssh"
 
 SSH_HOME="${HOME}/.ssh"
@@ -170,6 +184,9 @@ if [[ ! -f "${SSH_KEY}" ]]; then
 fi
 
 log_task_finish "ssh"
+
+
+
 
 
 
@@ -198,6 +215,8 @@ else
 fi
 
 log_task_finish "vcs"
+
+
 
 
 
