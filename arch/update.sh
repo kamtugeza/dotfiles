@@ -86,7 +86,9 @@ log_task_finish "nodejs"
 
 log_task_start "pi"
 
-pi install "${shared_pi_deps[@]}"
+for dependency in "${shared_pi_deps[@]}"; do
+  pi install "${dependency}"
+done
 
 log_task_finish "pi"
 

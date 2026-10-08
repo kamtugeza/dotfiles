@@ -355,7 +355,9 @@ log_task_finish "containers"
 log_task_start "pi"
 
 if $INSTALL_DEPS; then
-  pi install "${shared_pi_deps[@]}"
+  for dependency in "${shared_pi_deps[@]}"; do
+    pi install "${dependency}"
+  done
 fi
 
 log_task_finish "pi"

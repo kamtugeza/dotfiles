@@ -18,6 +18,4 @@ scrollback-limit = 4294967295
 theme = Catppuccin Macchiato
 window-title-font-family = "JetBrainsMonoNL Nerd Font Mono"
 
-command = tmux new-session
-
 config-file = ./os.config
