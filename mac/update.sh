@@ -58,6 +58,14 @@ log_task_finish "shells"
 
 
 
+run_task "podman" "update"
+
+
+
+
+
+
+
 log_task_start "nodejs"
 
 pnpm config set global-bin-dir "${NVM_BIN}"

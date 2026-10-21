@@ -59,3 +59,29 @@ read_args() {
     esac
   done
 }
+
+run_task() {
+  local task_name="${1:-}"
+  local task_action="${2:-}"
+  local TASK_DIR task_path
+
+  if [[ -z "${task_name}" || -z "${task_action}" ]]; then
+    log_err "run_task: task name and action are required"
+  fi
+
+  if [[ ! "${task_name}" =~ ^[a-zA-Z0-9_-]+$ || ! "${task_action}" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+    log_err "run_task: invalid task name or action"
+  fi
+
+  TASK_DIR="${MODULE_DIR}/tasks/${task_name}"
+  task_path="${TASK_DIR}/${task_action}.sh"
+
+  if [[ ! -f "${task_path}" ]]; then
+    log_err "run_task: task not found: ${task_name}/${task_action}"
+  fi
+
+  log_task_start "${task_name}"
+  source "${task_path}"
+  log_task_finish "${task_name}"
+}
+

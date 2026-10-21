@@ -222,6 +222,14 @@ log_task_finish "vcs"
 
 
 
+run_task "podman" "install"
+
+
+
+
+
+
+
 log_task_start "nodejs"
 
 # Bash doesn't know about NVM
@@ -234,7 +242,7 @@ if ! has_command nvm; then
   else 
     git -C "${NVM_DIR}" fetch --tags --quiet
   fi
-  
+
   latest_tag="$(git -C "${NVM_DIR}" describe --abbrev=0 --tags --match 'v[0-9]*' "$(git -C "${NVM_DIR}" rev-list --tags --max-count=1)")"
   git -C "${NVM_DIR}" -c advice.detachedHead=false checkout "${latest_tag}"
 
