@@ -220,7 +220,7 @@ ensure_podman_machine_running() {
 
   if ! podman machine inspect >/dev/null 2>&1; then
     log_info "podman: initializing machine"
-    podman machine init
+    podman machine init --cpus 6 --memory 8192
   fi
 
   machine_state="$(podman machine inspect --format '{{.State}}')"
