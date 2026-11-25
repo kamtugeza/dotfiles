@@ -1,40 +1,45 @@
 {
   "enabled": true,
-  "permissionPromptTimeoutSeconds": 600,
-  "allowBrowserProcess": false,
+  "enableAccessRequestTool": true,
+  "sandboxUserShell": false,
+  "allowProcessSignals": false,
   "network": {
     "allowLocalBinding": true,
     "allowAllUnixSockets": true,
-    "allowUnauthenticatedSocksProxy": true,
-    "allowedDomains": [],
-    "deniedDomains": []
+    "allowedDomains": [
+      "localhost",
+      "127.0.0.1",
+      "registry.npmjs.org"
+    ]
   },
   "filesystem": {
     "denyRead": [
-      "/Users",
-      "/home",
-      ".env",
-      ".env.*",
-      ".npmrc",
-      ".yarnrc",
-      "*.pem",
-      "*.key"
+      "/Users"
     ],
     "allowRead": [
       ".",
-      "./.agents",
-      "~/.config/pi",
-      "~/.local/share/pi"
+      "/opt/homebrew",
+      "~/.config",
+      "~/.local",
+      "~/.pi/agent/bin",
+      "~/.dotfiles/shared/src/.config/git",
+      "~/Library/pnpm",
+      "/Users/oleksii/.morrowness/shared/src/.agents/skills/techwrite/SKILL.md",
+      "/Users/oleksii/.agents/skills/openspec-update-change/SKILL.md",
+      "/Users/oleksii/.agents/skills/techwrite/references",
+      "/Users/oleksii/.morrowness/shared/src/.agents/skills/techwrite/references/reference.md",
+      "/Users/oleksii/.morrowness/shared/src/.agents/skills/techwrite/references/how-to.md",
+      "/Users/oleksii/.agents/skills/openspec-archive-change/SKILL.md"
     ],
     "allowWrite": [
       ".",
-      "/tmp"
+      "/tmp",
+      "~/Library/pnpm",
+      "~/.cache/node/corepack"
     ],
     "denyWrite": [
       ".env",
       ".env.*",
-      ".npmrc",
-      ".yarnrc",
       "*.pem",
       "*.key"
     ]
